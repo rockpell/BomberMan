@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4936824883061488}
   - component: {fileID: 61812414495246042}
+  - component: {fileID: 114614557777731122}
   m_Layer: 0
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,10 +81,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +95,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.95}
   m_EdgeRadius: 0
 --- !u!95 &95886448331559942
 Animator:
@@ -113,6 +114,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114614557777731122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089155609080678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39145524a0d0b154581b578e14039ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1692938436867174, guid: cd6c472ac453be946a73c6cb35ffd103, type: 2}
 --- !u!212 &212194675844948430
 SpriteRenderer:
   m_ObjectHideFlags: 1
