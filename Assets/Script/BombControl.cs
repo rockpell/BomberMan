@@ -10,15 +10,13 @@ public class BombControl : MonoBehaviour {
     private DataManager data_manager;
 
     private float explosion_left_time = 3f;
-    private int explosion_level = 2;
-
-    private Vector3 explosion_size;
+    private int explosion_level;
 
     // Use this for initialization
     void Start () {
         box_coll = GetComponent<BoxCollider2D>();
-        explosion_size = explosion.GetComponent<BoxCollider2D>().bounds.size;
         data_manager = GameObject.Find("DataMangerObject").GetComponent<DataManager>();
+        explosion_level = data_manager.getExplosionLevel();
     }
 	
 	// Update is called once per frame
@@ -27,9 +25,14 @@ public class BombControl : MonoBehaviour {
 
         if(explosion_left_time <= 0) {
             checkExplosion();
-            Destroy(this.gameObject);
+            destroyer();
         }
 	}
+
+    void destroyer() {
+        data_manager.reduceBombCount();
+        Destroy(this.gameObject);
+    }
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {

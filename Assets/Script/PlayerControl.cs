@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour {
     }
 
     public Animator animator;
-    public player_direction state = player_direction.down;
+    public player_direction direction = player_direction.down;
     public GameObject bomb;
 
     private DataManager data_manager;
@@ -30,18 +30,18 @@ public class PlayerControl : MonoBehaviour {
         float vertical = Input.GetAxis("Vertical"); //y
         float horizontal = Input.GetAxis("Horizontal"); //x
 
-        animator.SetInteger("player_direction", (int)state);
+        animator.SetInteger("player_direction", (int)direction);
 
         if(vertical > 0) { // up
-            state = player_direction.up;
+            direction = player_direction.up;
         } else if(vertical < 0) { //down
-            state = player_direction.down;
+            direction = player_direction.down;
         }
 
         if(horizontal > 0) { // right
-            state = player_direction.right;
+            direction = player_direction.right;
         } else if(horizontal < 0) { // left
-            state = player_direction.left;
+            direction = player_direction.left;
         }
 
         animator.SetFloat("direction_x", horizontal);
@@ -49,9 +49,10 @@ public class PlayerControl : MonoBehaviour {
 
         this.transform.Translate(new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0));
 
-        if(Input.GetKeyDown(KeyCode.Space) && !is_on_bomb) {
+        if(Input.GetKeyDown(KeyCode.Space) && !is_on_bomb && data_manager.checkCreatableBomb()) {
             Instantiate(bomb, this.transform.position, Quaternion.identity);
             is_on_bomb = true;
+            data_manager.addBombCount();
         }
     }
 
