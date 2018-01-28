@@ -47,66 +47,49 @@ public class BombControl : MonoBehaviour {
 
         bool is_check = false;
 
-        for(int i = 1; i < explosion_level + 1; i++) { // up
-            Vector3 target_position2 = target_position + new Vector3(0, 1 * i, 0);
-            if(data_manager.isImmortalTile(target_position2)) {
-                break;
-            } else if(is_check) {
-                break;
-            } else if(data_manager.isDestroyableTile(target_position2)) {
-                is_check = true;
+        for(int p =0; p < 4; p++) {
+            for(int i = 1; i < explosion_level + 1; i++) { // up
+                Vector3 target_position2 = Vector3.zero;
+                if(p == 0) {
+                    target_position2 = target_position + new Vector3(0, 1 * i, 0);
+                } else if(p == 1) {
+                    target_position2 = target_position + new Vector3(0, -1 * i, 0);
+                } else if(p == 2) {
+                    target_position2 = target_position + new Vector3(-1 * i, 0, 0);
+                } else if(p == 3) {
+                    target_position2 = target_position + new Vector3(1 * i, 0, 0);
+                }
+
+                if(data_manager.isImmortalTile(target_position2)) {
+                    break;
+                } else if(is_check) {
+                    break;
+                } else if(castRayBomb(target_position2)) {
+                    is_check = true;
+                } else if(data_manager.isDestroyableTile(target_position2)) {
+                    data_manager.setTileDestroyable(target_position2, null);
+                    break;
+                }
+
+                Instantiate(explosion, target_position2, Quaternion.identity);
             }
-
-            Instantiate(explosion, target_position2, Quaternion.identity);
-        }
-
-        is_check = false;
-
-        for(int i = 1; i < explosion_level + 1; i++) { // down
-            Vector3 target_position2 = target_position + new Vector3(0, -1 * i, 0);
-            if(data_manager.isImmortalTile(target_position2)) {
-                break;
-            } else if(is_check) {
-                break;
-            } else if(data_manager.isDestroyableTile(target_position2)) {
-                is_check = true;
-            }
-
-            Instantiate(explosion, target_position2, Quaternion.identity);
-        }
-
-        is_check = false;
-
-        for(int i = 1; i < explosion_level + 1; i++) { // left
-            Vector3 target_position2 = target_position + new Vector3(-1 * i, 0, 0);
-            if(data_manager.isImmortalTile(target_position2)) {
-                break;
-            } else if(is_check) {
-                break;
-            } else if(data_manager.isDestroyableTile(target_position2)) {
-                is_check = true;
-            }
-
-            Instantiate(explosion, target_position2, Quaternion.identity);
-        }
-
-        is_check = false;
-
-        for(int i = 1; i < explosion_level + 1; i++) { // right
-            Vector3 target_position2 = target_position + new Vector3(1 * i, 0, 0);
-            if(data_manager.isImmortalTile(target_position2)) {
-                break;
-            } else if(is_check) {
-                break;
-            } else if(data_manager.isDestroyableTile(target_position2)) {
-                is_check = true;
-            }
-
-            Instantiate(explosion, target_position2, Quaternion.identity);
         }
     }
 
     void setBurst() {
         explosion_left_time = 0;
+    }
+
+    bool castRayBomb(Vector2 target_position) {
+        RaycastHit2D hit = Physics2D.Raycast(target_position, Vector2.zero, 0f);
+
+        if(hit.collider != null) {
+            //Debug.Log(target_position + " cast ray : " + hit.collider.gameObject.tag);
+            if(hit.collider.gameObject.tag == "Bomb") {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

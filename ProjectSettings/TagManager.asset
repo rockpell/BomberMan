@@ -9,6 +9,7 @@ TagManager:
   - Destroyable
   - bomb_plus
   - explosion_plus
+  - Explosion
   layers:
   - Default
   - TransparentFX

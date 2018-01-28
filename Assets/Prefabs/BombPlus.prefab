@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4431402667024518}
   - component: {fileID: 212266087778376238}
   - component: {fileID: 61029092772819986}
+  - component: {fileID: 114883066462630108}
   m_Layer: 0
   m_Name: BombPlus
   m_TagString: bomb_plus
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492870805150110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.5, y: 1.52, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,8 +65,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114883066462630108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492870805150110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd82b3b59a5b7244b3847121815918c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212266087778376238
 SpriteRenderer:
   m_ObjectHideFlags: 1

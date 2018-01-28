@@ -22,22 +22,13 @@ public class ExplosionControl : MonoBehaviour {
     }
 
     void OnOnCollisionEnter2D(Collision2D coll) {
-        //if(coll.gameObject.tag == "Destroyable") {
-        //    Vector3 hitPosition = Vector3.zero;
-
-        //    foreach(ContactPoint2D hit in coll.contacts) {
-        //        hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
-        //        hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
-        //        //data_manager.setTileDestroyable(hitPosition, null);
-        //    }
-        //}
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         
         if(other.gameObject.tag == "Destroyable") {
-            data_manager.setTileDestroyable(this.transform.position, null);
-            Destroy(this.gameObject);
+            //data_manager.setTileDestroyable(this.transform.position, null);
+            //Destroy(this.gameObject);
         }
 
         if(other.gameObject.tag == "Bomb") {
