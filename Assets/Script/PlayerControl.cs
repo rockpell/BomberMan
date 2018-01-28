@@ -56,8 +56,14 @@ public class PlayerControl : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D coll) {
-
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "bomb_plus") {
+            data_manager.addBombMaxCount();
+            Destroy(other.gameObject);
+        } else if(other.gameObject.tag == "explosion_plus") {
+            data_manager.addExplosionLevel();
+            Destroy(other.gameObject);
+        }
     }
 
     void setOutBomb() {

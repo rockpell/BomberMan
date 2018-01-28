@@ -7,6 +7,8 @@ TagManager:
   - Bomb
   - Immortal
   - Destroyable
+  - bomb_plus
+  - explosion_plus
   layers:
   - Default
   - TransparentFX

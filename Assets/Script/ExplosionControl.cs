@@ -7,8 +7,8 @@ public class ExplosionControl : MonoBehaviour {
     private DataManager data_manager;
     private float left_time = 1f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         data_manager = GameObject.Find("DataMangerObject").GetComponent<DataManager>();
     }
 	
@@ -37,6 +37,7 @@ public class ExplosionControl : MonoBehaviour {
         
         if(other.gameObject.tag == "Destroyable") {
             data_manager.setTileDestroyable(this.transform.position, null);
+            Destroy(this.gameObject);
         }
 
         if(other.gameObject.tag == "Bomb") {

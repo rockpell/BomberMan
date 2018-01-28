@@ -33,6 +33,10 @@ public class DataManager : MonoBehaviour {
     public bool isImmortalTile(Vector3 position) {
         return tilemap_immortal.HasTile(tilemap_destroyable.WorldToCell(position));
     }
+    
+    public void addExplosionLevel() {
+        explosion_level += 1;
+    }
 
     public int getExplosionLevel() {
         return explosion_level;
