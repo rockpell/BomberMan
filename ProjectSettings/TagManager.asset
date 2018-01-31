@@ -10,6 +10,7 @@ TagManager:
   - bomb_plus
   - explosion_plus
   - Explosion
+  - Enemy
   layers:
   - Default
   - TransparentFX

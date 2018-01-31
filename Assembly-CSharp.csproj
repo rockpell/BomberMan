@@ -53,9 +53,11 @@
   <ItemGroup>
      <Compile Include="Assets\Script\BombControl.cs" />
      <Compile Include="Assets\Script\DataManager.cs" />
+     <Compile Include="Assets\Script\EnemyControl.cs" />
      <Compile Include="Assets\Script\ExplosionControl.cs" />
      <Compile Include="Assets\Script\ItemControl.cs" />
      <Compile Include="Assets\Script\PlayerControl.cs" />
+     <Compile Include="Assets\Script\Unit.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

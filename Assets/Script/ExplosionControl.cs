@@ -29,14 +29,12 @@ public class ExplosionControl : MonoBehaviour {
         if(other.gameObject.tag == "Destroyable") {
             //data_manager.setTileDestroyable(this.transform.position, null);
             //Destroy(this.gameObject);
-        }
-
-        if(other.gameObject.tag == "Bomb") {
+        } else if(other.gameObject.tag == "Bomb") {
             other.gameObject.SendMessage("setBurst");
-        }
-
-        if(other.gameObject.tag == "Player") {
-            Debug.Log("player is dead");
+        } else if(other.gameObject.tag == "Player") {
+            other.gameObject.SendMessage("damaged");
+        } else if(other.gameObject.tag == "Enemy") {
+            other.gameObject.SendMessage("damaged");
         }
     }
 
