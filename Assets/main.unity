@@ -3475,7 +3475,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 60
   orthographic: 1
   orthographic size: 4
@@ -3574,7 +3574,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025810030}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3586,7 +3586,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2025810032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3682,7 +3682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1011657966}
-  direction: 0
   bomb: {fileID: 1089155609080678, guid: 98d3af16424485942ab3b96346a9d7f3, type: 2}
 --- !u!61 &2033416735
 BoxCollider2D:

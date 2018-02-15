@@ -8,9 +8,10 @@ public class PlayerControl : Unit {
     public Animator animator;
     public GameObject bomb;
 
+    private Rigidbody2D rb;
     private DataManager data_manager;
     private bool is_on_bomb = false;
-    private float speed = 4f;
+    private float speed = 200f;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +20,7 @@ public class PlayerControl : Unit {
         direction = unit_direction.down;
         spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
         data_manager = GameObject.Find("DataMangerObject").GetComponent<DataManager>();
+        rb = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -38,9 +40,10 @@ public class PlayerControl : Unit {
     }
 
     void FixedUpdate() {
+        rb.velocity = Vector3.zero;
         float vertical = Input.GetAxis("Vertical"); //y
         float horizontal = Input.GetAxis("Horizontal"); //x
-
+        
         animator.SetInteger("player_direction", (int)direction);
 
         if(vertical > 0) { // up
@@ -58,7 +61,8 @@ public class PlayerControl : Unit {
         animator.SetFloat("direction_x", horizontal);
         animator.SetFloat("direction_y", vertical);
 
-        this.transform.Translate(new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0));
+        //this.transform.Translate(new Vector3(horizontal * speed * Time.deltaTime, vertical * speed * Time.deltaTime, 0));
+        rb.AddForce(new Vector3(horizontal, vertical, 0) * speed);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
