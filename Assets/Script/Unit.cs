@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour {
     protected unit_direction direction;
     protected SpriteRenderer spriteRenderer;
 
-    protected int life_point;
+    [SerializeField] protected int life_point;
     protected bool is_non_damage = false;
 
     // Use this for initialization
@@ -50,19 +50,19 @@ public class Unit : MonoBehaviour {
 
     protected IEnumerator slowDiedisappear() {
         byte invisible_value = 255;
-        Debug.Log("slowDiedisappear");
+
         while(invisible_value > 1) {
             invisible_value -= 2;
             spriteRenderer.color = new Color32(255, 255, 255, invisible_value);
 
             yield return new WaitForSeconds(0.006f);
         }
-        die();
+        Destroy(this.gameObject);
         yield return null;
     }
 
     protected void die() {
-        Destroy(this.gameObject);
+        StartCoroutine("slowDiedisappear");
     }
 
     public void damaged() {

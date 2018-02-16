@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour {
     public Tilemap tilemap_destroyable;
     public Tilemap tilemap_immortal;
 
-    private int explosion_level = 2;
+    private int explosion_level = 1;
     private int bomb_max_count = 1;
     private int bomb_now_count = 0;
 

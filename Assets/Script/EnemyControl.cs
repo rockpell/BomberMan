@@ -6,10 +6,11 @@ public class EnemyControl : Unit {
 
     private float speed = 1f;
     private Rigidbody2D rb;
+    private GameObject coll_Obeject;
 
     // Use this for initialization
     void Start () {
-        life_point = 2;
+        //life_point = 2;
         is_non_damage = false;
 
         spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -33,7 +34,17 @@ public class EnemyControl : Unit {
 
     void OnCollisionEnter2D(Collision2D coll) {
         randDirection();
-        Debug.Log("rand direction");
+        coll_Obeject = coll.gameObject;
+    }
+
+    void OnCollisionStay2D(Collision2D coll) {
+        if (coll.gameObject.Equals(coll_Obeject) && !(coll.gameObject.tag == "Player")) {
+            randDirection();
+        }
+
+        if(coll.gameObject.tag == "Player") {
+            coll.gameObject.GetComponent<PlayerControl>().damaged();
+        }
     }
 
     void move() {

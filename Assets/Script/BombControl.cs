@@ -15,7 +15,7 @@ public class BombControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         box_coll = GetComponent<BoxCollider2D>();
-        data_manager = GameObject.Find("DataMangerObject").GetComponent<DataManager>();
+        data_manager = GameObject.Find("MangerObject").GetComponent<DataManager>();
         explosion_level = data_manager.getExplosionLevel();
     }
 	
@@ -37,7 +37,7 @@ public class BombControl : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {
             box_coll.isTrigger = false;
-            other.gameObject.SendMessage("setOutBomb");
+            other.gameObject.GetComponent<PlayerControl>().setOutBomb();
         }
     }
 
