@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyControl : Unit {
 
-    private float speed = 1f;
+    [SerializeField]  private float speed = 1f;
     private Rigidbody2D rb;
     private GameObject coll_Obeject;
 

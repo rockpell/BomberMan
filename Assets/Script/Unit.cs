@@ -52,7 +52,7 @@ public class Unit : MonoBehaviour {
         byte invisible_value = 255;
 
         while(invisible_value > 1) {
-            invisible_value -= 2;
+            invisible_value -= 5;
             spriteRenderer.color = new Color32(255, 255, 255, invisible_value);
 
             yield return new WaitForSeconds(0.006f);

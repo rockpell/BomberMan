@@ -13,7 +13,7 @@ public class PlayerControl : Unit {
     private UIManager ui_manager;
     private bool is_on_bomb = false;
     private bool is_dead = false;
-    private float speed = 200f;
+    [SerializeField] private float speed = 200f;
     
 
     // Use this for initialization

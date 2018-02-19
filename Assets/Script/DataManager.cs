@@ -12,14 +12,20 @@ public class DataManager : MonoBehaviour {
     private int bomb_max_count = 1;
     private int bomb_now_count = 0;
 
+    private int now_stage_level = 1;
+    private int left_enemy = 9999;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        refreshLeftEnmey();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(left_enemy == 0)
+        {
+            nextStage();
+        }
 	}
 
     public void setTileDestroyable(Vector3 position, TileBase tile) {
@@ -72,5 +78,41 @@ public class DataManager : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public int getNowStageLevel() {
+        return now_stage_level;
+    }
+
+    public void addStageLevel() {
+        now_stage_level += 1;
+    }
+
+    public int getLeftEnemy() {
+        return left_enemy;
+    }
+
+    public void refreshLeftEnmey() {
+        left_enemy = GameObject.Find("Stage" + now_stage_level).transform.childCount;
+        Debug.Log("left_enemy : " + left_enemy);
+    }
+
+    public void reduceLeftEnmey() {
+        left_enemy -= 1;
+    }
+    
+    public void nextStage()
+    {
+        GameObject.Find("Stage" + now_stage_level).SetActive(false);
+        GameObject.Find("Stage" + (now_stage_level + 1)).SetActive(true);
+
+        refreshLeftEnmey();
+        addStageLevel();
+    }
+
+    private void movePositionPlayer()
+    {
+        Vector3 target_position = GameObject.Find("Stage" + now_stage_level).transform.Find("PlayerSpawn").transform.position;
+        Debug.Log("target_position : " + target_position);
     }
 }
