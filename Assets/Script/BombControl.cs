@@ -45,10 +45,9 @@ public class BombControl : MonoBehaviour {
         Vector3 target_position = this.gameObject.transform.position;
         Instantiate(explosion, target_position, Quaternion.identity);
 
-        bool is_check = false;
-
         for(int p =0; p < 4; p++) {
-            for(int i = 1; i < explosion_level + 1; i++) { // up
+            bool is_check = false;
+            for (int i = 1; i < explosion_level + 1; i++) { // up
                 Vector3 target_position2 = Vector3.zero;
                 if(p == 0) {
                     target_position2 = target_position + new Vector3(0, 1 * i, 0);
@@ -76,7 +75,7 @@ public class BombControl : MonoBehaviour {
         }
     }
 
-    void setBurst() {
+    public void setBurst() {
         explosion_left_time = 0;
     }
 
