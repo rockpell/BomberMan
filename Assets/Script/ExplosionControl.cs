@@ -9,7 +9,7 @@ public class ExplosionControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        data_manager = GameObject.Find("MangerObject").GetComponent<DataManager>();
+        data_manager = GameObject.Find("ManagerObject").GetComponent<DataManager>();
     }
 	
 	// Update is called once per frame

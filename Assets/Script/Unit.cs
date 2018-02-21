@@ -64,10 +64,9 @@ public class Unit : MonoBehaviour {
     protected void die() {
         StartCoroutine("slowDiedisappear");
     }
-
+    
     public void damaged() {
-
-        if(!is_non_damage) {
+        if (!is_non_damage) {
             life_point -= 1;
             is_non_damage = true;
             StartCoroutine("nonDamageTime");

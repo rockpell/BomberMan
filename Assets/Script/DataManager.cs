@@ -8,8 +8,8 @@ public class DataManager : MonoBehaviour {
     public Tilemap tilemap_destroyable;
     public Tilemap tilemap_immortal;
 
-    private int explosion_level = 1;
-    private int bomb_max_count = 1;
+    private int explosion_level = 2;
+    private int bomb_max_count = 2;
     private int bomb_now_count = 0;
 
     private int now_stage_level = 1;
@@ -22,9 +22,13 @@ public class DataManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(left_enemy == 0)
         {
             nextStage();
+        } else
+        {
+            refreshLeftEnmey();
         }
 	}
 
@@ -93,8 +97,7 @@ public class DataManager : MonoBehaviour {
     }
 
     public void refreshLeftEnmey() {
-        left_enemy = GameObject.Find("Stage" + now_stage_level).transform.childCount;
-        Debug.Log("left_enemy : " + left_enemy);
+        left_enemy = GameObject.Find("Stage").transform.Find("Stage" + now_stage_level).transform.Find("Enemys").childCount;
     }
 
     public void reduceLeftEnmey() {
@@ -103,16 +106,24 @@ public class DataManager : MonoBehaviour {
     
     public void nextStage()
     {
+        Debug.Log("now_stage_level : " + now_stage_level);
         GameObject.Find("Stage" + now_stage_level).SetActive(false);
-        GameObject.Find("Stage" + (now_stage_level + 1)).SetActive(true);
+        GameObject.Find("Stage").transform.Find("Stage" + (now_stage_level + 1)).gameObject.SetActive(true);
 
-        refreshLeftEnmey();
         addStageLevel();
+        refreshLeftEnmey();
+        movePositionPlayer();
+        movePositionCamera();
     }
 
     private void movePositionPlayer()
     {
         Vector3 target_position = GameObject.Find("Stage" + now_stage_level).transform.Find("PlayerSpawn").transform.position;
-        Debug.Log("target_position : " + target_position);
+        GameObject.Find("Player").transform.position = target_position;
+    }
+
+    private void movePositionCamera() {
+        Vector3 temp = GameObject.Find("Main Camera").transform.position;
+        GameObject.Find("Main Camera").transform.position = temp + new Vector3(25.8f, 0, 0);
     }
 }

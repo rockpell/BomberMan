@@ -22,8 +22,8 @@ public class PlayerControl : Unit {
         is_non_damage = false;
         direction = unit_direction.down;
         spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
-        data_manager = GameObject.Find("MangerObject").GetComponent<DataManager>();
-        ui_manager = GameObject.Find("MangerObject").GetComponent<UIManager>();
+        data_manager = GameObject.Find("ManagerObject").GetComponent<DataManager>();
+        ui_manager = GameObject.Find("ManagerObject").GetComponent<UIManager>();
         rb = GetComponent<Rigidbody2D>();
     }
 	
